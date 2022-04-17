@@ -20,14 +20,14 @@ const SignUp = () => {
   });
 
   const [createUserWithEmailAndPassword, user, loading, hookError] =
-    useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   // , { sendEmailVerification: true }
-  // console.log(hookError);
+  console.log(hookError);
 
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
 
-  // console.log(googleError);
+  console.log(googleError);
 
   const handleEmailChange = (e) => {
     const emailRegex = /\S+@\S+\.\S+/;
@@ -39,7 +39,7 @@ const SignUp = () => {
       setError({ ...error, email: 'Email not Valid' });
       setUserInfo({ ...userInfo, email: '' });
     }
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
 
   const handlePasswordChang = (e) => {
@@ -69,6 +69,7 @@ const SignUp = () => {
     createUserWithEmailAndPassword(userInfo.email, userInfo.password);
   };
 
+  // side effect user navigation related
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || '/';
@@ -77,6 +78,11 @@ const SignUp = () => {
       navigate(from, { replace: true });
     }
   }, [user, googleUser]);
+
+  // loading related
+  if (loading || googleLoading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="signup-container container">
@@ -118,7 +124,7 @@ const SignUp = () => {
             {/* confirm password input field*/}
             <Form.Control
               onChange={handleConfirmPassword}
-              type="Confirm Password"
+              type="Password"
               placeholder="Confirm Password"
             />
           </Form.Group>

@@ -17,7 +17,7 @@ const CheckOut = () => {
 
   return (
     <div>
-      <h1>Bro i m Check out Gazi...!!!</h1>
+      <h1>Bro i m Check out Gazi Vie...!!!</h1>
     </div>
   );
 };

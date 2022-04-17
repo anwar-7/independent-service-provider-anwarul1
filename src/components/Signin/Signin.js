@@ -65,6 +65,10 @@ const SignIn = () => {
     }
   }, [user, googleUser]);
 
+  if (loading || googleLoading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className="signin-container container">
       <div>
