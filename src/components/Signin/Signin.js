@@ -6,7 +6,7 @@ import {
 } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import './SignIn.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
   const [userInfo, setUserInfo] = useState({
@@ -57,9 +57,11 @@ const SignIn = () => {
   };
 
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || '/';
   useEffect(() => {
     if (user || googleUser) {
-      navigate('/home');
+      navigate(from, { replace: true });
     }
   }, [user, googleUser]);
 

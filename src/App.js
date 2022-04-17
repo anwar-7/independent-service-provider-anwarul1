@@ -8,6 +8,7 @@ import SignIn from './components/SignIn/SignIn';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SignUp from './components/SignUp/SignUp';
 import CheckOut from './components/CheckOut/CheckOut';
+import RequireAuth from './components/RequireAuth/RequireAuth';
 
 function App() {
   return (
@@ -18,7 +19,14 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/checkout" element={<CheckOut />} />
+        <Route
+          path="/checkout"
+          element={
+            <RequireAuth>
+              <CheckOut />
+            </RequireAuth>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
