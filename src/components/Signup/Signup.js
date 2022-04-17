@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import './Signup.css';
+import './SignUp.css';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { useNavigate } from 'react-router-dom';
 
-const Signup = () => {
+const SignUp = () => {
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
@@ -58,6 +59,13 @@ const Signup = () => {
     createUserWithEmailAndPassword(userInfo.email, userInfo.password);
   };
 
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user) {
+      navigate('/home');
+    }
+  }, [user]);
+
   return (
     <div className="signup-container">
       <div>
@@ -75,7 +83,9 @@ const Signup = () => {
               We'll never share your email with anyone else.
             </Form.Text>
             {/* email error massage */}
-            {error?.email && <p className="error-message">{error.email}</p>}
+            {error?.email && (
+              <p className="error-message text-danger">{error.email}</p>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -112,4 +122,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignUp;

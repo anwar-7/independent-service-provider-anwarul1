@@ -4,9 +4,9 @@ import Home from './components/Home/Home';
 import NotFound from './components/NotFound/NotFound';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import Signin from './components/Signin/Signin';
+import SignIn from './components/SignIn/SignIn';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Signup from './components/Signup/Signup';
+import SignUp from './components/SignUp/SignUp';
 
 function App() {
   return (
@@ -15,8 +15,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
