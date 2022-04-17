@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import './SignUp.css';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+} from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useNavigate } from 'react-router-dom';
 
@@ -18,11 +21,18 @@ const SignUp = () => {
 
   const [createUserWithEmailAndPassword, user, loading, hookError] =
     useCreateUserWithEmailAndPassword(auth);
+  // , { sendEmailVerification: true }
+  // console.log(hookError);
+
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
+
+  // console.log(googleError);
 
   const handleEmailChange = (e) => {
     const emailRegex = /\S+@\S+\.\S+/;
-    const validEmil = emailRegex.test(e.target.value);
-    if (validEmil) {
+    const validEmail = emailRegex.test(e.target.value);
+    if (validEmail) {
       setUserInfo({ ...userInfo, email: e.target.value });
       setError({ ...error, email: '' });
     } else {
@@ -61,13 +71,13 @@ const SignUp = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (user) {
+    if (user || googleUser) {
       navigate('/home');
     }
-  }, [user]);
+  }, [user, googleUser]);
 
   return (
-    <div className="signup-container">
+    <div className="signup-container container">
       <div>
         <h1>This is Sign up</h1>
         <Form onSubmit={handleSubmitSignUp}>
@@ -117,6 +127,16 @@ const SignUp = () => {
             Sign Up
           </Button>
         </Form>
+        {/* google sign in field  */}
+        <div className="google mt-2">
+          <Button
+            onClick={() => signInWithGoogle()}
+            variant="primary"
+            type="submit"
+          >
+            Sign In with Google
+          </Button>
+        </div>
       </div>
     </div>
   );

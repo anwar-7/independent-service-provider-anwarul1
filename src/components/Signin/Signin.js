@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import './SignIn.css';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +13,7 @@ const SignIn = () => {
     email: '',
     password: '',
   });
-  console.log(userInfo);
+  // console.log(userInfo);
 
   const [error, setError] = useState({
     email: '',
@@ -20,11 +23,32 @@ const SignIn = () => {
   const [signInWithEmailAndPassword, user, loading, hookError] =
     useSignInWithEmailAndPassword(auth);
 
+  // console.log(hookError);
+
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
+
+  // console.log(googleError);
+
   const handleEmailChange = (e) => {
-    setUserInfo({ ...userInfo, email: e.target.value });
+    const emailRegex = /\S+@\S+\.\S+/;
+    const validEmail = emailRegex.test(e.target.value);
+    if (validEmail) {
+      setUserInfo({ ...userInfo, email: e.target.value });
+      setError({ ...error, email: '' });
+    } else {
+      setError({ ...error, email: 'Invalid Email' });
+      setUserInfo({ ...userInfo, email: '' });
+    }
   };
   const handlePasswordChange = (e) => {
-    setUserInfo({ ...userInfo, password: e.target.value });
+    const passwordRegex = /.{6,}/;
+    const validPassword = passwordRegex.test(e.target.value);
+    if (validPassword) {
+      setUserInfo({ ...userInfo, password: e.target.value });
+    } else {
+      setError({ ...error, password: 'Please provide 6 digit' });
+    }
   };
 
   const handleSubmitSineIn = (e) => {
@@ -34,13 +58,13 @@ const SignIn = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (user) {
+    if (user || googleUser) {
       navigate('/home');
     }
-  }, [user]);
+  }, [user, googleUser]);
 
   return (
-    <div className="signin-container">
+    <div className="signin-container container">
       <div>
         <h1>This is Sign In</h1>
         <Form onSubmit={handleSubmitSineIn}>
@@ -73,6 +97,16 @@ const SignIn = () => {
             Sign In
           </Button>
         </Form>
+        {/* google sign in field  */}
+        <div className="google mt-2">
+          <Button
+            onClick={() => signInWithGoogle()}
+            variant="primary"
+            type="submit"
+          >
+            Sign In with Google
+          </Button>
+        </div>
       </div>
     </div>
   );

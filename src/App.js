@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer';
 import SignIn from './components/SignIn/SignIn';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SignUp from './components/SignUp/SignUp';
+import CheckOut from './components/CheckOut/CheckOut';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/checkout" element={<CheckOut />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
