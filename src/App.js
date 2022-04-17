@@ -9,6 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SignUp from './components/SignUp/SignUp';
 import CheckOut from './components/CheckOut/CheckOut';
 import RequireAuth from './components/RequireAuth/RequireAuth';
+import Blogs from './components/Blogs/Blogs';
+import About from './components/About/About';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/about" element={<About />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route

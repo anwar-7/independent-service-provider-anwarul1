@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import {
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import './SignIn.css';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
   const [userInfo, setUserInfo] = useState({
@@ -30,6 +31,8 @@ const SignIn = () => {
 
   // console.log(googleError);
 
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+
   const handleEmailChange = (e) => {
     const emailRegex = /\S+@\S+\.\S+/;
     const validEmail = emailRegex.test(e.target.value);
@@ -46,8 +49,10 @@ const SignIn = () => {
     const validPassword = passwordRegex.test(e.target.value);
     if (validPassword) {
       setUserInfo({ ...userInfo, password: e.target.value });
+      setError({ ...error, password: '' });
     } else {
       setError({ ...error, password: 'Please provide 6 digit' });
+      setUserInfo({ ...userInfo, password: '' });
     }
   };
 
@@ -81,10 +86,11 @@ const SignIn = () => {
               onChange={handleEmailChange}
               type="email"
               placeholder="Enter email"
+              required
             />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
+            {error?.email && (
+              <p className="error-message text-danger">{error.email}</p>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -94,7 +100,11 @@ const SignIn = () => {
               onChange={handlePasswordChange}
               type="password"
               placeholder="Password"
+              required
             />
+            {error?.password && (
+              <p className="error-message text-danger">{error.password}</p>
+            )}
           </Form.Group>
           {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
             <Form.Check type="checkbox" label="Check me out" />
@@ -103,6 +113,25 @@ const SignIn = () => {
             Sign In
           </Button>
         </Form>
+        <p>
+          New Here?{' '}
+          <Link
+            to="/signup"
+            className="text-primary pe-auto text-decoration-none"
+            onClick={() => navigate('/signup')}
+          >
+            Please Sign up
+          </Link>{' '}
+        </p>
+        <p>
+          Forget Password?{' '}
+          <button
+            className="btn btn-link text-primary pe-auto text-decoration-none"
+            onClick={() => sendPasswordResetEmail(userInfo.email)}
+          >
+            Reset Password
+          </button>{' '}
+        </p>
         {/* google sign in field  */}
         <div className="google mt-2">
           <Button

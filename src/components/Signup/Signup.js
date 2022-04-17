@@ -6,7 +6,7 @@ import {
   useSignInWithGoogle,
 } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [userInfo, setUserInfo] = useState({
@@ -17,17 +17,18 @@ const SignUp = () => {
   const [error, setError] = useState({
     email: '',
     password: '',
+    confirmPassword: '',
   });
 
   const [createUserWithEmailAndPassword, user, loading, hookError] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   // , { sendEmailVerification: true }
-  console.log(hookError);
+  // console.log(hookError);
 
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
 
-  console.log(googleError);
+  // console.log(googleError);
 
   const handleEmailChange = (e) => {
     const emailRegex = /\S+@\S+\.\S+/;
@@ -57,9 +58,9 @@ const SignUp = () => {
   const handleConfirmPassword = (e) => {
     if (e.target.value === userInfo.password) {
       setUserInfo({ ...userInfo, confirmPassword: e.target.value });
-      setError({ ...error, password: '' });
+      setError({ ...error, confirmPassword: '' });
     } else {
-      setError({ ...error, password: "Password don't match" });
+      setError({ ...error, confirmPassword: "Password don't match" });
       setUserInfo({ ...userInfo, confirmPassword: '' });
     }
   };
@@ -76,6 +77,7 @@ const SignUp = () => {
   useEffect(() => {
     if (user || googleUser) {
       navigate(from, { replace: true });
+      // navigate('/signin');
     }
   }, [user, googleUser]);
 
@@ -96,10 +98,8 @@ const SignUp = () => {
               onChange={handleEmailChange}
               type="email"
               placeholder="Enter email"
+              required
             />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
             {/* email error massage */}
             {error?.email && (
               <p className="error-message text-danger">{error.email}</p>
@@ -113,6 +113,7 @@ const SignUp = () => {
               onChange={handlePasswordChang}
               type="password"
               placeholder="Password"
+              required
             />
             {/* password error massage */}
             {error?.password && (
@@ -126,7 +127,13 @@ const SignUp = () => {
               onChange={handleConfirmPassword}
               type="Password"
               placeholder="Confirm Password"
+              required
             />
+            {error?.confirmPassword && (
+              <p className="error-message text-danger">
+                {error.confirmPassword}
+              </p>
+            )}
           </Form.Group>
           {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
             <Form.Check type="checkbox" label="Check me out" />

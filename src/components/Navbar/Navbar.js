@@ -22,6 +22,18 @@ const Navbar = () => {
         >
           Home
         </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? 'active-link' : 'link')}
+          to="/blogs"
+        >
+          Blogs
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? 'active-link' : 'link')}
+          to="/about"
+        >
+          About
+        </NavLink>
         {user ? (
           <Button onClick={() => signOut(auth, navigate('/'))}>Sign Out</Button>
         ) : (
@@ -32,12 +44,12 @@ const Navbar = () => {
             Sign In
           </NavLink>
         )}
-        <NavLink
+        {/* <NavLink
           className={({ isActive }) => (isActive ? 'active-link' : 'link')}
           to="/signup"
         >
           Sign Up
-        </NavLink>
+        </NavLink> */}
       </div>
     </div>
   );
