@@ -7,6 +7,8 @@ import service2 from '../../images/service2.png';
 import service3 from '../../images/service3.png';
 import banner1 from '../../images/banner/banner1.png';
 import review1 from '../../images/review/review1.png';
+import review2 from '../../images/review/review2.png';
+import review3 from '../../images/review/review3.png';
 import { HiBadgeCheck } from 'react-icons/hi';
 import { FaStar, FaStarHalf } from 'react-icons/fa';
 
@@ -163,7 +165,7 @@ const Home = () => {
               </div>
             </div>
             <div className="project-card-body text-center">
-              <img className=" img-fluid rounded" src={review1} alt="" />
+              <img className=" img-fluid rounded" src={review2} alt="" />
               <h4 className=" mt-2">
                 <span className=" fs-4 fw-bold">Kamal Hamid</span>
               </h4>
@@ -185,7 +187,7 @@ const Home = () => {
               </div>
             </div>
             <div className="project-card-body text-center">
-              <img className=" img-fluid rounded" src={review1} alt="" />
+              <img className=" img-fluid rounded" src={review3} alt="" />
               <h4 className=" mt-2">
                 <span className=" fs-4 fw-bold">Alomgir Alom</span>
               </h4>
