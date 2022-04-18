@@ -45,7 +45,7 @@
 
 @media only screen and (max-width: 576px) {
   .card-container {
-    display: grid;
+    /* display: grid; */
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 3%;
