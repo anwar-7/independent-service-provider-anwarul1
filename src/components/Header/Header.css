@@ -1,0 +1,73 @@
+.header {
+  height: 80px;
+  background-color: #212529;
+  padding-top: 20px;
+  margin-bottom: 30px;
+}
+
+.brand-name {
+  font-size: 30px;
+}
+
+.link {
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  color: blueviolet;
+}
+
+.active-link {
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.sign-out-link {
+  color: black;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  background-color: tomato;
+  width: 120px;
+  padding: 6px;
+  border-radius: 20px;
+}
+
+.active-sign-in-link {
+  color: black;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  background-color: darkorange;
+  width: 120px;
+  padding: 6px;
+  border-radius: 20px;
+  padding-left: 30px;
+}
+
+/* sign-in-link {
+  color: aliceblue;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  background-color: yellow;
+  width: 120px;
+  border-radius: 20px;
+  padding: 6px;
+} */
+
+/* bootstrap css class */
+.navbar-nav {
+  /* display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none; */
+  align-items: center;
+}
+
+.navbar-nav a {
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: 500;
+}

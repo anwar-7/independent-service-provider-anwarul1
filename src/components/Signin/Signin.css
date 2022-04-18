@@ -1,0 +1,23 @@
+.signin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  /* padding-top: 100px; */
+  /* width: 50%; */
+  margin-left: 5%;
+  margin-right: 5%;
+  /* background: red;
+  border: 2px solid black; */
+}
+
+.signin-body {
+  border-top: 5px solid black;
+  width: 350px;
+  height: 450px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}

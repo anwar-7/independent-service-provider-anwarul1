@@ -87,9 +87,12 @@ const SignUp = () => {
   }
 
   return (
-    <div className="signup-container container">
-      <div>
-        <h1>This is Sign up</h1>
+    <div
+      // style={{ height: '100vh', paddingTop: '30px' }}
+      className=" signup-container"
+    >
+      <div className="signup-body">
+        <h1 className="text-center f-2 fw-bold">This is Sign up</h1>
         <Form onSubmit={handleSubmitSignUp}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -138,12 +141,15 @@ const SignUp = () => {
           {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
             <Form.Check type="checkbox" label="Check me out" />
           </Form.Group> */}
-          <Button variant="primary" type="submit">
-            Sign Up
-          </Button>
+          <div className="d-flex justify-content-center">
+            <Button variant="primary" type="submit">
+              Sign Up
+            </Button>
+          </div>
         </Form>
+        <hr />
         {/* google sign in field  */}
-        <div className="google mt-2">
+        <div className="google mt-2 d-flex justify-content-center">
           <Button
             onClick={() => signInWithGoogle()}
             variant="primary"
