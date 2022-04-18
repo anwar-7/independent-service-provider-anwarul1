@@ -62,6 +62,21 @@ const SignIn = () => {
     signInWithEmailAndPassword(userInfo.email, userInfo.password);
   };
 
+  useEffect(() => {
+    if (hookError || googleError) {
+      switch (hookError?.code) {
+        case 'auth/invalid-email':
+          alert('Invalid email provided, please provide a valid email');
+          break;
+        case 'auth/invalid-password':
+          alert('Wrong password. Intruder!!');
+          break;
+        default:
+          alert('something went wrong');
+      }
+    }
+  }, [hookError, googleError]);
+
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || '/';

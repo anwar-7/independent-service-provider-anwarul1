@@ -70,6 +70,21 @@ const SignUp = () => {
     createUserWithEmailAndPassword(userInfo.email, userInfo.password);
   };
 
+  useEffect(() => {
+    if (hookError || googleError) {
+      switch (hookError?.code) {
+        case 'auth/invalid-email':
+          alert('Invalid email provided, please provide a valid email');
+          break;
+        case 'auth/invalid-password':
+          alert('Wrong password. Intruder!!');
+          break;
+        default:
+          alert('something went wrong');
+      }
+    }
+  }, [hookError, googleError]);
+
   // side effect user navigation related
   const navigate = useNavigate();
   const location = useLocation();
