@@ -7,7 +7,7 @@ import {
 } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-
+import { FcGoogle } from 'react-icons/fc';
 const SignUp = () => {
   const [userInfo, setUserInfo] = useState({
     email: '',
@@ -142,7 +142,7 @@ const SignUp = () => {
             <Form.Check type="checkbox" label="Check me out" />
           </Form.Group> */}
           <div className="d-flex justify-content-center">
-            <Button variant="primary" type="submit">
+            <Button variant="dark" type="submit">
               Sign Up
             </Button>
           </div>
@@ -152,10 +152,10 @@ const SignUp = () => {
         <div className="google mt-2 d-flex justify-content-center">
           <Button
             onClick={() => signInWithGoogle()}
-            variant="primary"
+            variant="dark"
             type="submit"
           >
-            Sign In with Google
+            <FcGoogle /> Sign In with Google
           </Button>
         </div>
       </div>

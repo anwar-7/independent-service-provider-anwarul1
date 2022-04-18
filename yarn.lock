@@ -1847,6 +1847,11 @@
   dependencies:
     "@babel/runtime" "^7.6.2"
 
+"@react-icons/all-files@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@react-icons/all-files/-/all-files-4.1.0.tgz#477284873a0821928224b6fc84c62d2534d6650b"
+  integrity sha512-hxBI2UOuVaI3O/BhQfhtb4kcGn9ft12RWAFVMUeNjqqhLsHvFtzIkFaptBJpFDANTKoDfdVoHTKZDlwKCACbMQ==
+
 "@restart/hooks@^0.4.0", "@restart/hooks@^0.4.6":
   version "0.4.6"
   resolved "https://registry.yarnpkg.com/@restart/hooks/-/hooks-0.4.6.tgz#15dcf34631a618c513efc924705c7cbe349a4a0c"
@@ -7613,6 +7618,11 @@ react-firebase-hooks@^5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/react-firebase-hooks/-/react-firebase-hooks-5.0.3.tgz#3125a382d6b72deee776fe1df9e0c8173cf36d5d"
   integrity sha512-0+V2XwInZJNjW8B2cm+U21Hlv4xnp/1tJqIoDg2rjyWzKTQ9VoLPQ9PAt+fMqPumjLz5uCIREY7YqGSSjc439Q==
+
+react-icons@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.3.1.tgz#2fa92aebbbc71f43d2db2ed1aed07361124e91ca"
+  integrity sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ==
 
 react-is@^16.13.1, react-is@^16.3.2:
   version "16.13.1"

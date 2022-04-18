@@ -8,6 +8,7 @@ import {
 import auth from '../../firebase.init';
 import './SignIn.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { FcGoogle } from 'react-icons/fc';
 
 const SignIn = () => {
   const [userInfo, setUserInfo] = useState({
@@ -110,7 +111,7 @@ const SignIn = () => {
             <Form.Check type="checkbox" label="Check me out" />
           </Form.Group> */}
           <div className=" d-flex justify-content-center">
-            <Button variant="primary" type="submit">
+            <Button variant="dark fw-bold" type="submit">
               Sign In
             </Button>
           </div>
@@ -127,22 +128,24 @@ const SignIn = () => {
         </p>
         <p>
           Forget Password?{' '}
-          <button
+          <Link
+            to=""
             className="btn btn-link text-primary pe-auto text-decoration-none"
             onClick={() => sendPasswordResetEmail(userInfo.email)}
           >
             Reset Password
-          </button>{' '}
+          </Link>{' '}
         </p>
         <hr />
         {/* google sign in field  */}
         <div className="google mt-2 d-flex justify-content-center">
           <Button
             onClick={() => signInWithGoogle()}
-            variant="primary"
+            variant="dark"
             type="submit"
           >
-            Sign In with Google
+            <FcGoogle />
+            {''} Sign In with Google
           </Button>
         </div>
       </div>
