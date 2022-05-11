@@ -13,8 +13,8 @@ const CheckOut = () => {
   // }, [user]);
 
   return (
-    <div>
-      <h1>Bro i m Check out Gazi Vie...!!!</h1>
+    <div style={{ height: '100vh' }} className="m-5 p-5">
+      <h1 className="mt-5 pt-5">Thank you for the booking</h1>
     </div>
   );
 };

@@ -9,6 +9,8 @@ import auth from '../../firebase.init';
 import './SignIn.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignIn = () => {
   const [userInfo, setUserInfo] = useState({
@@ -66,13 +68,13 @@ const SignIn = () => {
     if (hookError || googleError) {
       switch (hookError?.code) {
         case 'auth/invalid-email':
-          alert('Invalid email provided, please provide a valid email');
+          toast('Invalid email provided, please provide a valid email');
           break;
         case 'auth/invalid-password':
-          alert('Wrong password. Intruder!!');
+          toast('Wrong password. Intruder!!');
           break;
         default:
-          alert('something went wrong');
+          toast('something went wrong');
       }
     }
   }, [hookError, googleError]);
@@ -162,6 +164,7 @@ const SignIn = () => {
             <FcGoogle />
             {''} Sign In with Google
           </Button>
+          <ToastContainer />
         </div>
       </div>
     </div>
