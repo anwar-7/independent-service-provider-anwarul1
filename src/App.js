@@ -4,9 +4,9 @@ import Home from './components/Home/Home';
 import NotFound from './components/NotFound/NotFound';
 
 import Footer from './components/Footer/Footer';
-import SignIn from './components/SignIn/SignIn';
+import SignIn from './components/Signin/Signin';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SignUp from './components/SignUp/SignUp';
+import SignUp from './components/Signup/Signup';
 import CheckOut from './components/CheckOut/CheckOut';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import Blogs from './components/Blogs/Blogs';

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import './SignUp.css';
+import './Signup.css';
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
@@ -10,6 +10,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 const SignUp = () => {
   const [userInfo, setUserInfo] = useState({
     email: '',

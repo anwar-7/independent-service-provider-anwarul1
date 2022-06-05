@@ -14,7 +14,13 @@ const Header = () => {
 
   return (
     <div className="header">
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        bg="dark"
+        variant="dark"
+        sticky="top"
+      >
         <Container>
           <Navbar.Brand>
             Digital<span style={{ color: 'tomato' }}>Camera</span>
