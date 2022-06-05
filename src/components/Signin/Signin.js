@@ -34,7 +34,7 @@ const SignIn = () => {
 
   // console.log(googleError);
 
-  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+  const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
   const handleEmailChange = (e) => {
     const emailRegex = /\S+@\S+\.\S+/;
@@ -86,7 +86,7 @@ const SignIn = () => {
     if (user || googleUser) {
       navigate(from, { replace: true });
     }
-  }, [user, googleUser]);
+  }, [user, googleUser, navigate, from]);
 
   if (loading || googleLoading) {
     return <p>Loading...</p>;

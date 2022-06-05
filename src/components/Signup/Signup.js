@@ -6,7 +6,7 @@ import {
   useSignInWithGoogle,
 } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -97,7 +97,7 @@ const SignUp = () => {
       navigate(from, { replace: true });
       // navigate('/signin');
     }
-  }, [user, googleUser]);
+  }, [user, googleUser, navigate, from]);
 
   // loading related
   if (loading || googleLoading) {

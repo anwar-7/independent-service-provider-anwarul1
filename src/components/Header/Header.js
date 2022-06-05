@@ -2,11 +2,10 @@ import { signOut } from 'firebase/auth';
 import React from 'react';
 import { Container, Nav } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import './Header.css';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../../images/logo.png';
 
 const Header = () => {
   const [user] = useAuthState(auth);
